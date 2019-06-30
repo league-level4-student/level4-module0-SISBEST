@@ -86,14 +86,9 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	public void paintComponent(Graphics g) {
 		for(int i = 0; i < cells.length; i++) {
 			for(int j = 0; j < cells[i].length; j++) {
-				g.drawRect(cells[i][j].getX(), cells[i][j].getY(), cellSize, cellSize);
+				g.setColor(Color.CYAN);
+				g.drawRect(cells[i][j].getX()*cellSize, cells[i][j].getY()*cellSize, cellSize, cellSize);
 			}}
-		
-		
-		
-		// draws grid
-		g.setColor(Color.BLACK);
-		g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 	}
 	
 	//advances world one step
@@ -105,11 +100,8 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		//8. check if each cell should live or die
 		for(int i = 0; i < cells.length; i++) {
 			for(int j = 0; j < cells[i].length; j++) {
-				cells[i][j].liveOrDie(livingNeighbors);
+				cells[i][j].liveOrDie(livingNeighbors[i][j]);
 			}}
-		
-		
-		
 		repaint();
 	}
 	
@@ -140,7 +132,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		if(cells[x-1][y].isAlive) {
 			neighbors++;
 		}
-		if(cells[x-1][y].isAlive) {
+		if(cells[x][y-1].isAlive) {
 			neighbors++;
 		}
 		return neighbors;
@@ -168,10 +160,14 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		//10. Use e.getX() and e.getY() to determine
 		//    which cell is clicked. Then toggle
 		//    the isAlive variable for that cell.
-		int cellx = e.getX()/cellsperrow;
-		
-		
-		
+		int $x = e.getX()/cellsPerRow;
+		int $y = e.getY()/cellsPerRow;
+		if(cells[$x][$y].isAlive == true) {
+			cells[$x][$y].isAlive = false;
+		}
+		else if(cells[$x][$y].isAlive == false) {
+			cells[$x][$y].isAlive = true;
+		}
 		repaint();
 	}
 
