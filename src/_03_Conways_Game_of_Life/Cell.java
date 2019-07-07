@@ -15,6 +15,7 @@ public class Cell implements Drawable{
 		this.x = x;
 		this.y = y;
 		this.cellSize = size;
+		System.out.println("Cell X: "+ x + " Cell Y: " + y + " Cell Size: "+ size);
 	}
 	
 	//11. Complete the liveOrDie method
@@ -55,11 +56,13 @@ public class Cell implements Drawable{
 	//    draws empty square if cell is dead
 	@Override
 	public void draw(Graphics g) {
+	if(isAlive == false) {
+		g.setColor(Color.RED);
+	}
+	if(isAlive) {
+		g.setColor(Color.GREEN);
+	}
+	g.fillRect(x, y, cellSize, cellSize);
 	g.drawRect(x, y, cellSize, cellSize);
-		
-		
-		
-		
-		
 	}
 }
