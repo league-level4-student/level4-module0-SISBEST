@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class SamuelsGameOfLife implements ActionListener {
+public class SamuelsGameOfLife extends Applet implements ActionListener {
 	JFrame f = new JFrame("Samuel's Game Of Life");
 	JPanel p = new JPanel();
 	JLabel title = new JLabel("Samuel's Game Of Life");
@@ -48,6 +48,7 @@ public class SamuelsGameOfLife implements ActionListener {
 				splash.setFont(new Font("Cursive", Font.ITALIC, 20));
 
 			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -59,22 +60,22 @@ public class SamuelsGameOfLife implements ActionListener {
 		int sn = r.nextInt(5);
 		switch (sn) {
 		case 0:
-			splashtext = "What the heck, Conway?";
+			splashtext = "100203020012929209292939392991919129119002 years old!";
 
 		case 1:
-			splashtext = "Fat-Free!";
+			splashtext = "Now without stickman bob!";
 			break;
 
 		case 2:
-			splashtext = "Fast, Easy, Reliable!";
+			splashtext = "Someone's phone is charging now!";
 			break;
 
 		case 3:
-			splashtext = "Happy Birthday, cow!";
+			splashtext = "Accept the TOS!";
 			break;
 
 		case 4:
-			splashtext = "bob feels sad.";
+			splashtext = "stickman bob feels sad.";
 			break;
 		}
 		return splashtext;
@@ -86,7 +87,6 @@ public class SamuelsGameOfLife implements ActionListener {
 		JButton source = (JButton) e.getSource();
 		if (source.equals(play)) {
 			playSGOL psgol = new playSGOL();
-			psgol.main(null);
 			f.setVisible(false);
 		}
 		if (source.equals(quit)) {
@@ -96,7 +96,6 @@ public class SamuelsGameOfLife implements ActionListener {
 
 	void relaunch() {
 		playSGOL psgol = new playSGOL();
-		psgol.main(null);
 		f.setVisible(false);
 	}
 }
