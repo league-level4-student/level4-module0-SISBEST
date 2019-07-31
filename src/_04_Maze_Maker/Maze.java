@@ -2,30 +2,33 @@ package _04_Maze_Maker;
 import java.awt.Graphics;
 
 public class Maze {
-	//1. Create a 2D array of cells. Don't initialize it.
-
+	Cell[][] maze;
 	private int width;
 	private int height;
 
 	public Maze(int w, int h) {
 		this.width = w;
 		this.height = h;
-
-		//2. Initialize the cells using the width and height varibles
-
-		//3. Iterated through each cell and initialize it
-		//   using i and j as the location
+		System.out.println("Width:" + this.width);
+		System.out.println("Height:" + this.height);
+		maze = new Cell[w][h];
+		for(int i=0; i<this.width; i++) {
+			for(int j=0; j<this.height; j++) {
+				maze[i][j] = new Cell(i, j);
+				System.out.println("Cell at: " + w + "," + h + " created.");
+			}
+		}
 		
 	}
-
-	//4. This method iterates through the cells and draws them
 	public void draw(Graphics g) {
-		
+		for(int i=0; i<getWidth(); i++) {
+			for(int j=0; j<getHeight(); j++) {
+				maze[i][j].draw(g);
+			}
+		}
 	}
-	
-	//4b. This method returns the selected cell.
 	public Cell getCell(int x, int y){
-		return  null;
+		return maze[x][y];
 	}
 
 	public int getWidth() {
