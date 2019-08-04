@@ -1,4 +1,5 @@
 package _04_Maze_Maker;
+
 import java.awt.Graphics;
 
 public class Maze {
@@ -9,25 +10,24 @@ public class Maze {
 	public Maze(int w, int h) {
 		this.width = w;
 		this.height = h;
-		System.out.println("Width:" + this.width);
-		System.out.println("Height:" + this.height);
 		maze = new Cell[w][h];
-		for(int i=0; i<this.width; i++) {
-			for(int j=0; j<this.height; j++) {
+		for (int i = 0; i < this.width; i++) {
+			for (int j = 0; j < this.height; j++) {
 				maze[i][j] = new Cell(i, j);
-				System.out.println("Cell at: " + w + "," + h + " created.");
 			}
 		}
-		
+
 	}
+
 	public void draw(Graphics g) {
-		for(int i=0; i<getWidth(); i++) {
-			for(int j=0; j<getHeight(); j++) {
+		for (int i = 0; i < getWidth(); i++) {
+			for (int j = 0; j < getHeight(); j++) {
 				maze[i][j].draw(g);
 			}
 		}
 	}
-	public Cell getCell(int x, int y){
+
+	public Cell getCell(int x, int y) {
 		return maze[x][y];
 	}
 
